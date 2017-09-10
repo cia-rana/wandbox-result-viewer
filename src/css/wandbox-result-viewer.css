@@ -1,0 +1,24 @@
+div.wb-result-container {
+  padding: 10px;
+  width: 600px;
+  border: solid #aaa 1px;
+  border-radius: 0.25em;
+  font-family: sans-serif;
+  background-color: #fefefe;
+}
+
+div.wb-code-label, div.wb-input-label, div.wb-output-label {
+  padding-bottom: 3px;
+  border-bottom: solid #aaa 1px;
+}
+
+pre.wb-input, pre.wb-output {
+  display: block;
+  background-color: #333;
+  color: #fff;
+}
+
+pre.wb-code, pre.wb-input, pre.wb-output {
+  overflow-x: auto;
+  padding: 5px;
+}

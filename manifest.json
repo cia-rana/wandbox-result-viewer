@@ -1,0 +1,15 @@
+{
+  "name": "Wandbox-Result-Viewer",
+  "description": "*Wandbox Result Viewer* converts a permanent link of [Wandbox](https://wandbox.org/) to a source code(and standard I/O) frame.",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["src/js/wandbox-result-viewer.js",
+             "src/js/script-injector.js"],
+      "css": ["src/css/wandbox-result-viewer.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
