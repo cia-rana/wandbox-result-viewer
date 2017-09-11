@@ -6,8 +6,8 @@
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["src/js/wandbox-result-viewer.js",
-             "src/js/script-injector.js"],
+      "js": ["src/js/script-injector.js",
+             "src/js/wandbox-result-viewer.js"],
       "css": ["src/css/wandbox-result-viewer.css"],
       "run_at": "document_idle"
     }

@@ -170,7 +170,7 @@ function addCodeContainer(resp, container) {
 }
 
 function getPermlink(value) {
-  let frg = value.split("/").filter(e => Boolean(e));
+  let frg = value.split("/").filter(function(e){ return e });
   if (frg.length == 0) {
     return "";
   }
@@ -178,19 +178,22 @@ function getPermlink(value) {
 }
 
 let divTags = document.getElementsByTagName("div");
-let divTagsNum = divTags.length;
-for (let i = 0; i < divTagsNum; i++) {
-  let divTag = divTags[i];
-  if (!(divTag.children.length == 0 && getHostnameByString(divTag.textContent) == HOST_WANDBOX)) {
-    continue;
-  }
+
+let divHasWandboxPaths = Array.from(divTags).filter(function(divTag){
+  return divTag.children.length == 0 && getHostnameByString(divTag.textContent) == HOST_WANDBOX;
+});
+
+if (divHasWandboxPaths.length > 0) {
+  injectScripts();
   
-  let permlink = getPermlink(divTag.textContent);
-  
-  if (debug) {
-    addCodeContainer(JSON.parse(testRespText), divTag);
-  } else {
-    loadResultByPermlink(permlink, divTag);
-  }
+  divHasWandboxPaths.filter(function(divHasWandboxPath) {
+    let permlink = getPermlink(divHasWandboxPath.textContent);
+    
+    if (debug) {
+      addCodeContainer(JSON.parse(testRespText), divHasWandboxPath);
+    } else {
+      loadResultByPermlink(permlink, divHasWandboxPath);
+    }
+  });
 }
 })();
